@@ -1,2 +1,43 @@
 # SummarEase
-SummarEase is a Django web app that offers fast, local text summarization without relying on any external AI APIs or services. Users can paste or upload text documents and instantly get concise summaries powered by custom-built algorithms or simple NLP techniques
+
+SummarEase is a free and open-source Django web application that provides quick and reliable text summarization using local processing only — no third-party AI APIs or cloud services required.
+
+It allows users to paste or upload documents and get summaries instantly using simple NLP algorithms. This project demonstrates how to build intelligent text tools without external dependencies, making it budget-friendly and privacy-conscious.
+
+---
+
+## Features
+
+- Paste text or upload TXT/PDF documents for summarization
+- Summarizes text locally using custom algorithms (e.g., frequency-based or extractive summarization)
+- Fast and cost-free — no internet required for AI processing
+- Simple Django-based web interface
+- Supports common document formats
+- Responsive and user-friendly design
+
+---
+
+## Tech Stack
+
+| Component       | Technology          |
+|-----------------|---------------------|
+| Backend         | Django              |
+| Text Processing | Python NLP (NLTK / custom) |
+| File Parsing    | PyPDF2 (for PDFs)   |
+| Frontend       | Django Templates + Bootstrap (optional) |
+| Environment    | Python 3.11+        |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.11 or higher
+- Git
+- pip (Python package installer)
+
+
+
+
+
