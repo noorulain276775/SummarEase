@@ -24,7 +24,7 @@ It allows users to paste or upload documents and get summaries instantly using s
 | Backend         | Django              |
 | Text Processing | Python NLP (NLTK / custom) |
 | File Parsing    | PyPDF2 (for PDFs)   |
-| Frontend       | Django Templates + Bootstrap (optional) |
+| Frontend       | React.js |
 | Environment    | Python 3.11+        |
 
 ---
