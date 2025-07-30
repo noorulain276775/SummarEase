@@ -3,6 +3,7 @@ import nltk.data
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from collections import defaultdict
+from .text_classifier_model import text_classifier
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -10,6 +11,7 @@ nltk.download('stopwords')
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
 def summarize_text(text, max_sentences=3):
+    """Returns Summary of the text"""
     sentences = tokenizer.tokenize(text)
     stop_words = set(stopwords.words('english'))
     
@@ -27,5 +29,13 @@ def summarize_text(text, max_sentences=3):
                 sentence_scores[sent] += word_freq[word]
                 
     ranked_sentences = sorted(sentence_scores, key=sentence_scores.get, reverse=True)
+    print(ranked_sentences)
     summary = ' '.join(ranked_sentences[:max_sentences])
     return summary
+
+
+
+def classify_text(text):
+    """Returns predicted category for the given text"""
+    prediction = text_classifier.predict([text])[0]
+    return prediction
