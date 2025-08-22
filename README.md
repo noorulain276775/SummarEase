@@ -217,18 +217,4 @@ python test_apis.py
 - Clean code structure and documentation
 - Responsive and accessible UI design
 
-## License
 
-This project is open source and available under the MIT License.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Submit a pull request
-
-## Support
-
-For issues and questions, please check the existing issues or create a new one in the repository.
