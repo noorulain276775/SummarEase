@@ -67,18 +67,29 @@ def analyze_sentiment(text: str):
 
 def extract_keywords(text: str, top_k: int = 10):
     """Extract top keywords/keyphrases using TF-IDF on the single document."""
-    vectorizer = TfidfVectorizer(stop_words='english', ngram_range=(1, 2), max_features=5000)
-    tfidf_matrix = vectorizer.fit_transform([text])
-    feature_names = vectorizer.get_feature_names_out()
-    scores = tfidf_matrix.toarray()[0]
-    ranked_indices = scores.argsort()[::-1]
-    keywords = []
-    for idx in ranked_indices[:top_k]:
-        term = feature_names[idx]
-        score = float(scores[idx])
-        if score > 0:
-            keywords.append({'term': term, 'score': score})
-    return keywords
+    if not text.strip():
+        return []
+    
+    try:
+        vectorizer = TfidfVectorizer(stop_words='english', ngram_range=(1, 2), max_features=5000)
+        tfidf_matrix = vectorizer.fit_transform([text])
+        feature_names = vectorizer.get_feature_names_out()
+        scores = tfidf_matrix.toarray()[0]
+        ranked_indices = scores.argsort()[::-1]
+        keywords = []
+        for idx in ranked_indices[:top_k]:
+            term = feature_names[idx]
+            score = float(scores[idx])
+            if score > 0:
+                keywords.append(term)  # Return just the term, not the dictionary
+        return keywords
+    except Exception:
+        # Fallback: simple word extraction
+        words = text.lower().split()
+        # Remove common stop words and short words
+        stop_words = {'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by'}
+        keywords = [word for word in words if len(word) > 2 and word not in stop_words]
+        return keywords[:top_k]
 
 
 def classify_with_confidence(text: str, top_k: int = 3):

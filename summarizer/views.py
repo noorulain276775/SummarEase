@@ -63,4 +63,4 @@ def keywords_view(request):
     if not text:
         return Response({'error': 'Text is required'}, status=status.HTTP_400_BAD_REQUEST)
     keywords = extract_keywords(text, top_k=top_k)
-    return Response({'keywords': keywords}, status=status.HTTP_200_OK)
+    return Response({'keywords': keywords, 'top_k': top_k}, status=status.HTTP_200_OK)
